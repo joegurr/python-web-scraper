@@ -10,7 +10,7 @@ logger = logging.getLogger('scraping.all_books_page')
 
 class AllBooksPage:
     def __init__(self, page_content):
-        logger.debug('Parsing page content with BeautifulSoup.')
+        logger.debug('Parsing page content with BeautifulSoup HTML parser.')
         self.soup = BeautifulSoup(page_content, 'html.parser')
 
 
@@ -27,5 +27,5 @@ class AllBooksPage:
         pattern = 'Page [0-9]+ of ([0-9]+)'
         matcher = re.search(pattern, content)
         pages = int(matcher.group(1))
-        logger.info(f'Found number of catalogue pages available: {pages}')
+        logger.info(f'Found number of catalogue pages available: `{pages}`.')
         return pages
